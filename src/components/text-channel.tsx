@@ -12,6 +12,8 @@ import { Scaling, GripVertical } from "lucide-react";
 import { useRecoilState } from "recoil";
 import { channelState } from "@/store/channel-store";
 import { ChannelToggleGroup } from "./channel-toggle-group";
+import { PopoverInfo } from "./popover-info";
+import { HoverInfo, TextChannelHoverInfo } from "./hover-info";
 
 const useGesture = createUseGesture([dragAction, pinchAction]);
 
@@ -94,8 +96,9 @@ export const TextChannel = () => {
         <div className="absolute left-2 top-2">
           <GripVertical className="h-5 w-5" />
         </div>
-        <div className="absolute right-2 top-2">
-          <ChannelToggleGroup />
+        <div className="flex flex-row space-x-2 absolute right-2 top-2">
+          <TextChannelHoverInfo />
+          <HoverInfo />
         </div>
         <iframe
           width={768 * scale}
