@@ -4,7 +4,7 @@ import { Joystick } from "react-joystick-component";
 import { IJoystickUpdateEvent } from "react-joystick-component/build/lib/Joystick";
 import { useEffect, useState } from "react";
 import { useJoyStickControllerProvider } from "./providers/player-controller-provider";
-import { isTouchDevice } from "@/lib/isTouchDevice";
+import { isTouchDevice } from "@/lib/is-touch-device";
 
 export const PlayerController = () => {
   const { setForward, setBackward, setLeft, setRight } =

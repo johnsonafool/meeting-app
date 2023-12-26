@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useJoyStickControllerProvider } from "@/components/providers/player-controller-provider";
-import { isTouchDevice } from "@/lib/isTouchDevice";
+import { isTouchDevice } from "@/lib/is-touch-device";
 
 const moveFieldByKey = (key: string) => keys[key as keyof typeof keys];
 const keys = {
