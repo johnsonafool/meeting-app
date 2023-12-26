@@ -12,6 +12,7 @@ import { MiroBoard } from "@/components/boards/miro-board";
 import { JoyStickControllerProvider } from "@/components/providers/player-controller-provider";
 import { Layout as SceneLayout } from "@/components/dom/layout";
 import { TextChannel } from "@/components/text-channel";
+import { ClerkProvider } from "@clerk/nextjs";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -26,23 +27,25 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body
-        className={cn(inter.className, "fixed h-full w-full bg-blue-gray-50")}
-      >
-        <JoyStickControllerProvider>
-          <StreamingProvider>
-            <Toaster />
-            <Footer />
-            <Webcam />
-            <Sidebar />
-            <PlayerController />
-            <MiroBoard />
-            <TextChannel />
-            <SceneLayout>{children}</SceneLayout>
-          </StreamingProvider>
-        </JoyStickControllerProvider>
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang="en">
+        <body
+          className={cn(inter.className, "fixed h-full w-full bg-blue-gray-50")}
+        >
+          <JoyStickControllerProvider>
+            <StreamingProvider>
+              <Toaster />
+              <Footer />
+              <Webcam />
+              <Sidebar />
+              <PlayerController />
+              <TextChannel />
+              <MiroBoard />
+              <SceneLayout>{children}</SceneLayout>
+            </StreamingProvider>
+          </JoyStickControllerProvider>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }

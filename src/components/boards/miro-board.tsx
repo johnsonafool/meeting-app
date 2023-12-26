@@ -32,8 +32,8 @@ export const MiroBoard = () => {
   }, []);
 
   const [style, api] = useSpring(() => ({
-    x: 256,
-    y: 256,
+    x: 256 / 2,
+    y: 256 / 2,
   }));
   const [scale, setScale] = useState(1);
   const ref = useRef<HTMLDivElement>(null);

@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useCallback, useState, FC } from "react";
 import {
   useLocalParticipant,
@@ -179,9 +181,10 @@ export const StreamingStartModal: FC = () => {
       />
 
       <Input
+        type="text"
         placeholder="Username"
         onChange={onNameChange}
-        value={localParticipant?.user_name || " "}
+        value={localParticipant?.user_name ?? " "}
       />
 
       {mediaErrorMessages && (

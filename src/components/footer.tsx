@@ -11,6 +11,8 @@ import { Figma as InboxArrowDownIcon } from "lucide-react";
 import { Figma as LifebuoyIcon } from "lucide-react";
 import { Figma as PowerIcon } from "lucide-react";
 import { StreamingStartModal } from "./modals/streaming-start-modal";
+import { Tray } from "./streaming/tray";
+import { UserButton } from "@clerk/nextjs";
 
 const profileMenuItems = [
   {
@@ -79,15 +81,17 @@ const JoinedMenu = () => {
       >
         Room #0
       </Link>
-      <div className="absolute left-2/4 top-2/4 -translate-x-2/4 -translate-y-2/4">
-        {/* <VideoDollyTray /> */}
+      {/* <div className="absolute left-2/4 top-2/4 -translate-x-2/4 -translate-y-2/4"> */}
+      <Tray />
+      {/* </div> */}
+      <div className="ml-4">
+        <UserButton />
       </div>
-      {/* <ProfileMenu /> */}
     </div>
   );
 };
 
-// const ProfileMenu: FC = () => {
+// const ProfileMenu = () => {
 //   const [isMenuOpen, setIsMenuOpen] = useState(false);
 //   const closeMenu = () => setIsMenuOpen(false);
 

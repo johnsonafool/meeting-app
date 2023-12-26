@@ -11,6 +11,7 @@ import {
 import { Scaling, GripVertical } from "lucide-react";
 import { useRecoilState } from "recoil";
 import { channelState } from "@/store/channel-store";
+import { ChannelToggleGroup } from "./channel-toggle-group";
 
 const useGesture = createUseGesture([dragAction, pinchAction]);
 
@@ -32,8 +33,8 @@ export const TextChannel = () => {
   }, []);
 
   const [style, api] = useSpring(() => ({
-    x: 128,
-    y: 128,
+    x: 128 / 0.8,
+    y: 128 / 0.8,
   }));
   const [scale, setScale] = useState(1);
   const ref = useRef<HTMLDivElement>(null);
@@ -93,10 +94,13 @@ export const TextChannel = () => {
         <div className="absolute left-2 top-2">
           <GripVertical className="h-5 w-5" />
         </div>
+        <div className="absolute right-2 top-2">
+          <ChannelToggleGroup />
+        </div>
         <iframe
           width={768 * scale}
           height={432 * scale}
-          //   src={MIRO_BOARD_URL}
+          src={"https://chat.vercel.ai/"}
           allowFullScreen
         ></iframe>
       </animated.div>

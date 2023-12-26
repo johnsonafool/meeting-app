@@ -52,25 +52,14 @@ export const Sidebar = () => {
           </Button>
         </SystemSettingsDialog>
 
-        {/* <SpeedDial placement="right">
-          <SpeedDialHandler>
-            <IconButton size="lg" className="rounded-full">
-              <MdAdd className="h-5 w-5 transition-transform group-hover:rotate-45" />
-            </IconButton>
-          </SpeedDialHandler>
-          <SpeedDialContent className="relative flex-row">
-            <Popover popupContent={"(尚未完成) 新增文字聊天"}>
-              <SpeedDialAction>
-                <MdAddComment className=" h-5 w-5" />
-              </SpeedDialAction>
-            </Popover>
-            <Popover popupContent={"(尚未完成) 新增共同白板"}>
-              <SpeedDialAction>
-                <MdOutlineAddToQueue className="h-5 w-5" />
-              </SpeedDialAction>
-            </Popover>
-          </SpeedDialContent>
-        </SpeedDial> */}
+        {/* <Button
+          variant={"ghost"}
+          size="lg"
+          className={cn("bg-white flex gap-2 rounded-full text-black border")}
+        >
+          <UserButton afterSignOutUrl="/" />
+          <span>{user?.fullName}</span>
+        </Button> */}
       </div>
     </div>
   );
