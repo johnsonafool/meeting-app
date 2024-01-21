@@ -1,0 +1,14 @@
+version: "3.8"
+services:
+  nextjs-frontend:
+    image: johnsonafool/meeting-app:main
+    platform: linux/amd64
+    ports:
+      - "3000:3000" # Expose the port that Next.js runs on
+    depends_on:
+      - socketio-service
+
+  socketio-service:
+    build: ./socketio-service # Path to the directory with the Dockerfile
+    ports:
+      - "6543:6543" # Expose the port that your Socket.IO service runs on

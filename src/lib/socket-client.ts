@@ -1,7 +1,7 @@
 import { io } from "socket.io-client";
 
 export const socketClient = () => {
-  const PORT = parseInt(process.env.PORT || "3000", 10);
+  const PORT = parseInt(process.env.PORT || "6543", 10);
 
   const socket = io(`:${PORT + 1}`, {
     path: "/api/socket",
