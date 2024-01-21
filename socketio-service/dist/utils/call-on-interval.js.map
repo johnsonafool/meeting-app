@@ -1,0 +1,1 @@
+{"version":3,"file":"call-on-interval.js","sourceRoot":"","sources":["../../src/utils/call-on-interval.ts"],"names":[],"mappings":";;;AAAA,SAAgB,cAAc;AAC5B,0CAA0C;AAC1C,QAA0B,EAC1B,GAAM,EACN,QAAgB;IAEhB,MAAM,UAAU,GAAG,WAAW,CAAC,GAAG,EAAE;QAClC,QAAQ,CAAC,GAAG,CAAC,CAAC;IAChB,CAAC,EAAE,QAAQ,CAAC,CAAC;IACb,OAAO,GAAG,EAAE,CAAC,aAAa,CAAC,UAAU,CAAC,CAAC;AACzC,CAAC;AAVD,wCAUC"}
