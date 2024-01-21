@@ -28,7 +28,7 @@ COPY . .
 ENV NEXT_TELEMETRY_DISABLED 1
 
 # Fix issue: https://nextjs.org/docs/messages/sharp-missing-in-production
-RUN yarn add sharp
+# RUN yarn add sharp
 
 RUN yarn build
 
