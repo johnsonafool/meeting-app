@@ -1,12 +1,10 @@
 import { authMiddleware } from "@clerk/nextjs";
 
-const isContainer = process.env.MEETING_APP_MODE === "docker";
+export const isContainer = process.env.MEETING_APP_MODE === "docker";
 
 function middleware() {
   return;
 }
-
-console.log("isTesting", process.env.NODE_ENV);
 
 // This example protects all routes including api/trpc routes
 // Please edit this to allow other routes to be public as needed.

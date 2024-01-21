@@ -13,6 +13,7 @@ import { JoyStickControllerProvider } from "@/components/providers/player-contro
 import { Layout as SceneLayout } from "@/components/dom/layout";
 import { TextChannel } from "@/components/text-channel";
 import { ClerkProvider } from "@clerk/nextjs";
+import { isContainer } from "@/middleware";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -27,25 +28,54 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <ClerkProvider>
-      <html lang="en">
-        <body
-          className={cn(inter.className, "fixed h-full w-full bg-blue-gray-50")}
-        >
-          <JoyStickControllerProvider>
-            <StreamingProvider>
-              <Toaster />
-              <Footer />
-              <Webcam />
-              <Sidebar />
-              <PlayerController />
-              <TextChannel />
-              <MiroBoard />
-              <SceneLayout>{children}</SceneLayout>
-            </StreamingProvider>
-          </JoyStickControllerProvider>
-        </body>
-      </html>
-    </ClerkProvider>
+    <>
+      {!isContainer ? (
+        <ClerkProvider>
+          <html lang="en">
+            <body
+              className={cn(
+                inter.className,
+                "fixed h-full w-full bg-blue-gray-50"
+              )}
+            >
+              <JoyStickControllerProvider>
+                <StreamingProvider>
+                  <Toaster />
+                  <Footer />
+                  <Webcam />
+                  <Sidebar />
+                  <PlayerController />
+                  <TextChannel />
+                  <MiroBoard />
+                  <SceneLayout>{children}</SceneLayout>
+                </StreamingProvider>
+              </JoyStickControllerProvider>
+            </body>
+          </html>
+        </ClerkProvider>
+      ) : (
+        <html lang="en">
+          <body
+            className={cn(
+              inter.className,
+              "fixed h-full w-full bg-blue-gray-50"
+            )}
+          >
+            <JoyStickControllerProvider>
+              <StreamingProvider>
+                <Toaster />
+                <Footer />
+                <Webcam />
+                <Sidebar />
+                <PlayerController />
+                <TextChannel />
+                <MiroBoard />
+                <SceneLayout>{children}</SceneLayout>
+              </StreamingProvider>
+            </JoyStickControllerProvider>
+          </body>
+        </html>
+      )}
+    </>
   );
 }
