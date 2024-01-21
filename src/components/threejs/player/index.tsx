@@ -5,7 +5,7 @@ import { Euler, useFrame, Vector3 } from "@react-three/fiber";
 import { Player, PlayerActionName } from "@/types/player-type";
 
 import { CameraControls } from "@react-three/drei";
-// import { socketClient } from "@/lib/socket-client";
+import { socket } from "@/lib/socket-client";
 import useCamaeraControl from "./hooks/useCamaeraControl";
 import useControl from "./hooks/useControl";
 import useAnimation from "./hooks/useAnimation";
@@ -22,7 +22,6 @@ type Props = {
 };
 
 const GameObject: FC<Props> = ({ controlType, CameraControlRef }) => {
-  // const socket = socketClient();
   const { name, useModelType } = useRecoilValue(playerState);
   const { isJoined, isDailyJoined } = useRecoilValue(joinState);
   const { motion, position, rotation, scale, playAnimation } = useControl(
@@ -40,21 +39,21 @@ const GameObject: FC<Props> = ({ controlType, CameraControlRef }) => {
 
   useCamaeraControl(controlType, CameraControlRef, isPlaying, position, motion);
 
-  // useEffect(() => {
-  //   if (!isJoined) {
-  //     return;
-  //   }
-  //   const newPlayer: Player = {
-  //     id: socket.id,
-  //     name: name,
-  //     useModelType: useModelType,
-  //     position: position as [number, number, number],
-  //     rotation: rotation as [number, number, number],
-  //     playAnimation: playAnimation as PlayerActionName,
-  //     dailySessionId: localParticipant?.session_id ?? null,
-  //   };
-  //   socket.emit("player:join", newPlayer);
-  // }, [isJoined]);
+  useEffect(() => {
+    if (!isJoined) {
+      return;
+    }
+    const newPlayer: Player = {
+      id: socket.id as string,
+      name: name,
+      useModelType: useModelType,
+      position: position as [number, number, number],
+      rotation: rotation as [number, number, number],
+      playAnimation: playAnimation as PlayerActionName,
+      dailySessionId: localParticipant?.session_id ?? null,
+    };
+    socket.emit("player:join", newPlayer);
+  }, [isJoined]);
 
   useFrame(() => {
     if (!isJoined) {

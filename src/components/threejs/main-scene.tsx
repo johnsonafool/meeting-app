@@ -1,7 +1,7 @@
 "use client";
 
 import { ControlType } from "@/types/control-type";
-// import { socketClient } from "@/lib/socket-client";
+import { socket } from "@/lib/socket-client";
 import { CameraControls, OrbitControls } from "@react-three/drei";
 import dynamic from "next/dynamic";
 import { Suspense, useEffect, useRef, useState } from "react";
@@ -36,20 +36,20 @@ const useControlType = () => {
 
 const useOtherPlayersUpdate = () => {
   const [otherPlayers, setOtherPlayers] = useState<TPlayer[]>([]);
-  // const socket = socketClient();
 
-  // useEffect(() => {
-  //   function playerUpdate(playersList: TPlayer[]) {
-  //     const players = playersList.filter((player) => player.id !== socket.id);
-  //     setOtherPlayers(players);
-  //   }
+  useEffect(() => {
+    function playerUpdate(playersList: TPlayer[]) {
+      const players = playersList.filter((player) => player.id !== socket.id);
 
-  //   socket.on("player:update", playerUpdate);
+      setOtherPlayers(players);
+    }
 
-  //   return () => {
-  //     socket.off("player:update", playerUpdate);
-  //   };
-  // }, []);
+    socket.on("player:update", playerUpdate);
+
+    return () => {
+      socket.off("player:update", playerUpdate);
+    };
+  }, []);
 
   return otherPlayers;
 };

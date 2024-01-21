@@ -1,25 +1,6 @@
 import { io } from "socket.io-client";
 
-export const socketClient = () => {
-  const PORT = parseInt(process.env.PORT || "6543", 10);
+// "undefined" means the URL will be computed from the `window.location` object
+const URL = `http://localhost:${process.env.NEXT_PUBLIC_BACKEND_PORT}`;
 
-  const socket = io(`:${PORT + 1}`, {
-    path: "/api/socket",
-    addTrailingSlash: false,
-  });
-
-  socket.on("connect", () => {
-    console.log("Connected");
-  });
-
-  socket.on("disconnect", () => {
-    console.log("Disconnected");
-  });
-
-  socket.on("connect_error", async (err) => {
-    console.log(`connect_error due to ${err.message}`);
-    await fetch("/api/socket");
-  });
-
-  return socket;
-};
+export const socket = io(URL);

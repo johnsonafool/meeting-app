@@ -7,7 +7,7 @@ export const playerState = atom<{
 }>({
   key: "player",
   default: {
-    name: "尚未命名",
+    name: "No name",
     useModelType: "male",
   },
 });
