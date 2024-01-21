@@ -48,7 +48,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Build the Docker image
-        run: docker build -t nextjs-docker .
+        run: docker build .
         # run: docker-compose build --no-cache --force-rm
 
   # test-docker-image:
