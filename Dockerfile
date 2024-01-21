@@ -39,12 +39,14 @@ RUN yarn build
 FROM base AS runner
 WORKDIR /app
 
-ENV NODE_ENV test
+ENV NODE_ENV production
 # Uncomment the following line in case you want to disable telemetry during runtime.
 ENV NEXT_TELEMETRY_DISABLED 1
 
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
+# echo something to .env.local
+RUN echo "MEETING_APP_MODE=docker" > .env.local
 
 COPY --from=builder /app/public ./public
 
